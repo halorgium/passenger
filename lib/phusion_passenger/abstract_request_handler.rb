@@ -421,7 +421,7 @@ private
 		end
 		headers = Hash[*headers_data.split(NULL)]
 		headers[CONTENT_LENGTH] = headers[HTTP_CONTENT_LENGTH]
-		headers["PATH_INFO"] = headers["REQUEST_URI"].split("?").first
+		headers["PATH_INFO"] = headers["REQUEST_URI"].split("?", 2).first
 		return [headers, socket]
 	rescue SecurityError => e
 		STDERR.puts("*** Passenger RequestHandler: HTTP header size exceeded maximum.")
